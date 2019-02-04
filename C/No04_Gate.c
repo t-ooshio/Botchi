@@ -37,16 +37,22 @@ int main(void){
     char str[1000];
     fgets(str, sizeof(str), stdin);
     int h, w, n;
+    
     parse(str, &h, &w, &n);
     int px=0, py=0;
+    bool isinvalid = true;
     for(int i=0; i<n; i++){
         fgets(str, sizeof(str), stdin);
         move(str[0], &px, &py);
         //printf("%c %d %d\n", str[0], px, py);
         if(px<0 || w<=px || py<0 || h<=py){
-            printf("invalid\n");
+            isinvalid = false;
         }
     }
-    printf("valid\n");
+    if(isinvalid){
+       printf("valid\n");
+    }else{
+       printf("invalid\n");
+    }
     return 0;
 }
